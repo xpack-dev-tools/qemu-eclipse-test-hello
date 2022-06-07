@@ -1,0 +1,48 @@
+{
+  "name": "@xpack-dev-tools/qemu-eclipse-test-hello",
+  "version": "0.1.0",
+  "description": "A source xPack with a bare-metal QEMU Hello World test",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xpack-dev-tools/qemu-eclipse-test-hello.git"
+  },
+  "bugs": {
+    "url": "https://github.com/xpack-dev-tools/qemu-eclipse-test-hello/issues/"
+  },
+  "homepage": "https://github.com/xpack-dev-tools/qemu-eclipse-test-hello/",
+  "keywords": [
+    "xpack"
+  ],
+  "author": {
+    "name": "Liviu Ionescu",
+    "email": "ilg@livius.net",
+    "url": "https://github.com/ilg-ul/"
+  },
+  "license": "MIT",
+  "config": {},
+  "dependencies": {},
+  "devDependencies": {
+    "@xpack-dev-tools/qemu-arm": "7.0.0-1.1",
+    "@xpack-dev-tools/arm-none-eabi-gcc": "11.2.1-1.2.2",
+    "@xpack-dev-tools/aarch64-none-elf-gcc": "11.2.1-1.2.2"
+  },
+  "xpack": {
+    "minimumXpmRequired": "0.13.5",
+    "actions": {
+      "test": [
+        "qemu-system-arm --machine mps2-an385 --nographic -d unimp,guest_errors --semihosting-config enable=on,target=native,arg=test,arg=M3 -kernel cortex-m3-flash-release/qemu-hello.elf",
+        "qemu-system-arm --machine virt --cpu cortex-a15 --nographic -d unimp,guest_errors --semihosting-config enable=on,target=native,arg=test,arg=A15 -kernel cortex-a15-ram-release/qemu-hello.elf",
+        "qemu-system-aarch64 --machine virt --cpu cortex-a72 --nographic -d unimp,guest_errors --semihosting-config enable=on,target=native,arg=test,arg=A72 -kernel cortex-a72-ram-release/qemu-hello.elf"
+      ],
+      "strip": [
+        "arm-none-eabi-strip cortex-m3-flash-release/qemu-hello.elf",
+        "arm-none-eabi-strip cortex-a15-ram-release/qemu-hello.elf",
+        "aarch64-none-elf-strip cortex-a72-ram-release/qemu-hello.elf"
+      ]
+    }
+  }
+}
