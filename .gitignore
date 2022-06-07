@@ -8,3 +8,4 @@
 .settings/language.settings.xml
 .settings/org.eclipse.embedcdt.managedbuild.cross.arm.core.prefs
 /xpacks/
+/node_modules/
