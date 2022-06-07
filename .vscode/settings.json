@@ -1,13 +1,22 @@
 {
   "cSpell.ignoreWords": [
+    "FPSCR",
+    "HEAPINFO",
+    "Lockup",
+    "XPSR",
+    "aarch",
     "balign",
     "globl",
     "lgcc",
     "librdimon",
     "lrdimon",
     "newlib",
+    "nographic",
     "progbits",
     "rdimon",
-    "semihosting"
+    "semihosting",
+    "unimp",
+    "virt",
+    "xpack"
   ]
 }

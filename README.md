@@ -2,7 +2,7 @@
 
 ## Overall
 
-A small "Hello World!" semihosting test running on QEMU.
+A small "Hello World!" application to test QEMU in bare-metal configurations.
 
 The supported platforms are:
 
