@@ -44,13 +44,27 @@ Reset_Handler (void)
 {
 
   __asm__(" MSR msp, %0 " : : "r"(&__stack) :);
+  // cortexm_architecture_set_msp(&__stack);
 
   // SCB
   // https://developer.arm.com/documentation/dui0552/a/cortex-m3-peripherals/system-control-block
 
   // SCB->VTOR
   // https://developer.arm.com/documentation/dui0552/a/cortex-m3-peripherals/system-control-block/vector-table-offset-register
+  // Mandatory when running from RAM. Not available on Cortex-M0.
+#if defined(__ARM_ARCH_7M__) || defined(__ARM_ARCH_7EM__)
   *((uint32_t*)0xE000ED08) = ((uint32_t)_interrupt_vectors & (~0x3F));
+#endif
+
+#if defined(__ARM_FP)
+  // Enable CP10 and CP11 coprocessor.
+  // SCB->CPACR |= (0xF << 20);
+  *((uint32_t*)0xE000ED88) |= (uint32_t)(0xF << 20);
+
+  // Lazy save.
+  // FPU->FPCCR |= FPU_FPCCR_ASPEN_Msk | FPU_FPCCR_LSPEN_Msk;
+  *((uint32_t*)0xE000EF34) |= (uint32_t)(0x3 << 29);
+#endif // defined(__ARM_FP)
 
   // Newlib _start() does not copy initialised data. Do it here.
   if (&__data_load_addr__ != &__data_begin__)
