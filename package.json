@@ -35,6 +35,8 @@
     "actions": {
       "test": [
         "qemu-system-arm --machine mps2-an385 --nographic -d unimp,guest_errors --semihosting-config enable=on,target=native,arg=test,arg=M3 -kernel cortex-m3-flash-release/qemu-hello.elf",
+        "qemu-system-arm --machine mps2-an386 --nographic -d unimp,guest_errors --semihosting-config enable=on,target=native,arg=test,arg=M4 -kernel cortex-m3-flash-release/qemu-hello.elf",
+        "qemu-system-arm --machine mps2-an500 --nographic -d unimp,guest_errors --semihosting-config enable=on,target=native,arg=test,arg=M7 -kernel cortex-m3-flash-release/qemu-hello.elf",
         "qemu-system-arm --machine virt --cpu cortex-a15 --nographic -d unimp,guest_errors --semihosting-config enable=on,target=native,arg=test,arg=A15 -kernel cortex-a15-ram-release/qemu-hello.elf",
         "qemu-system-aarch64 --machine virt --cpu cortex-a72 --nographic -d unimp,guest_errors --semihosting-config enable=on,target=native,arg=test,arg=A72 -kernel cortex-a72-ram-release/qemu-hello.elf"
       ],
