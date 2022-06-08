@@ -24,7 +24,8 @@
 
 MEMORY
 {
-  RAM (xrw) : ORIGIN = 0x40000000, LENGTH = 0x03000000 /* 48M */
-  HEAP (xrw) : ORIGIN = 0x43000000, LENGTH = 0x01000000 /* 16M */
+  RAM (xrw) : ORIGIN = 0x40000000, LENGTH = 0x04000000 /* 64M */
+  /* Semihosting SYS_HEAPINFO returns it. */
+   HEAP (xrw) : ORIGIN = 0x44000000, LENGTH = 0x04000000 /* 64M */
 }
 

@@ -25,7 +25,7 @@
 MEMORY
 {
   FLASH (rx) : ORIGIN = 0x00000000, LENGTH = 16M
-  RAM (xrw) : ORIGIN = 0x20000000, LENGTH = 0x01000000 /* 16M */
+  RAM (xrw) : ORIGIN = 0x20000000, LENGTH = 0x00800000 /* 8M */
   /* Semihosting SYS_HEAPINFO returns it. */
   HEAP (xrw) : ORIGIN = 0x21000000, LENGTH = 0x01000000 /* 16M */
 }
